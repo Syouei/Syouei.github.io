@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>测试</title>
+    <link href="/2021/12/19/%E6%B5%8B%E8%AF%95-1/"/>
+    <url>/2021/12/19/%E6%B5%8B%E8%AF%95-1/</url>
+    
+    <content type="html"><![CDATA[<h4 id="额"><a href="#额" class="headerlink" title="额"></a>额</h4><p><strong>测试</strong>一下 </p><p>2021年12月19日</p><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td></td><td></td></tr></tbody></table><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;hello world&#x27;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>计算机技术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2021/12/19/hello-world/"/>
     <url>/2021/12/19/hello-world/</url>
