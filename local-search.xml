@@ -5,8 +5,8 @@
   
   <entry>
     <title>测试</title>
-    <link href="/2021/12/19/%E6%B5%8B%E8%AF%95-1/"/>
-    <url>/2021/12/19/%E6%B5%8B%E8%AF%95-1/</url>
+    <link href="/posts/37773.html"/>
+    <url>/posts/37773.html</url>
     
     <content type="html"><![CDATA[<h5 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h5><p><strong>测试</strong>一下 </p><p>2021年12月19日 CR.Z</p><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td></td><td></td></tr></tbody></table><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;hello world&#x27;</span><br></code></pre></td></tr></table></figure>]]></content>
     
