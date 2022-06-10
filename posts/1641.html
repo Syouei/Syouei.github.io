@@ -16,19 +16,38 @@
   <meta name="author" content="CR.Z">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://syouei.github.io/archives/2021/12/index.html">
+    <meta name="description" content="本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。 1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。·在Matrix客户端（以Element为例）中进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为Matrix与Telegram建立桥接（Bridge）">
+<meta property="og:url" content="https://syouei.github.io/posts/1641.html">
 <meta property="og:site_name" content="CR.Z &#39;s Blog">
+<meta property="og:description" content="本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。 1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。·在Matrix客户端（以Element为例）中进">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-10T02:54:03.000Z">
+<meta property="article:modified_time" content="2022-06-10T02:54:10.366Z">
 <meta property="article:author" content="CR.Z">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>归档 - CR.Z &#39;s Blog</title>
+  <title>为Matrix与Telegram建立桥接（Bridge） - CR.Z &#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -55,7 +74,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -156,9 +175,49 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="为Matrix与Telegram建立桥接（Bridge）">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      CR.Z
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-06-10 10:54" pubdate>
+        星期五, 六月 10日 2022, 10:54 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      989 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -171,40 +230,83 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 4 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/posts/37773.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">测试</span>
-      <time style="float: right;">12-19</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">为Matrix与Telegram建立桥接（Bridge）</h1>
+            
+            <div class="markdown-body">
+              <p>本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。</p>
+<p>1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。<br>·在Matrix客户端（以Element为例）中进入群组，打开更多选项—设置—成员，点右下角邀请按钮，将用户**@telegram:t2bot.io<strong>邀请加入聊天室。<br>·在Telegram客户端进入群组详情页，点邀请新成员，邀请</strong>@matrix_t2bot**加入群组。</p>
+<p>2.在Telegram群组聊天框中输入并向bot发送**/id**命令，等待bot回复，获得此群组的id号。</p>
+<p>3.回到Matrix客户端，进入聊天室，发送**!tg bridge -xxxxx<strong>命令（“-xxxxx”是步骤2中获得的Tg群组id好，注意“-”符号与空格）。此时如果配置正确，bot会要求你验证，输入</strong>continue**命令确认即完成配置。</p>
+<p>配置好网桥后，两个平台的消息将由bot互相转发，bot将为Telegram用户创建Matrix账户，而Matrix用户在Telegram中将由bot显示。最好把bot设置成协管员。</p>
+<p>P.S.有朋友说Matrix在国内没法正常使用，这个说法其实不对。无法正常使用的只是matrix.org提供的Homeserver而已，而Matrix协议并没有被禁止。作一个比喻，Matrix就像邮箱一样，matrix.org只是其中一个邮箱服务提供商，此外还有成百上千个别的提供商，甚至你自己也能搭建。Gmail用不了我们就用163，实际大多数Homeserver都是可以正常用的。正如163和Gmail用户可以互相发邮件，托管在不同Homeserver的用户或聊天室也能互相交流，我们可以选择一个信任的提供商托管账号。这里有一份公共Matrix服务器列表可供选择参考。</p>
+<blockquote>
+<p>最后推荐几个比较活跃的中文频道吧：<br>#delicious:retirenow.top（美食群）<br>#yingshiju:cybre.space（电影交流群）<br>#game-recommend:bgme.me（游戏推荐群）<br>#tuna:matrix.org（清华大学TUNA技术群）</p>
+</blockquote>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/165a.html">
+                        <span class="hidden-mobile">“Your Element is misconfigured”错误的解决</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -287,6 +389,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 

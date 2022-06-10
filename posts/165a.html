@@ -16,19 +16,38 @@
   <meta name="author" content="CR.Z">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://syouei.github.io/archives/2021/12/index.html">
+    <meta name="description" content="笔者昨天装了个Element For Windows，结果一打开就“Failed to start”，报错“Your Element is misconfigured  Invalid homeserver discovery response” 笔者百度未果，转而咨询了社区志愿者得知是默认Homeserver的问题，并按官方文档修改默认配置解决了问题。鉴于国内相关资料较少，把这次经历分享出来供大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“Your Element is misconfigured”错误的解决">
+<meta property="og:url" content="https://syouei.github.io/posts/165a.html">
 <meta property="og:site_name" content="CR.Z &#39;s Blog">
+<meta property="og:description" content="笔者昨天装了个Element For Windows，结果一打开就“Failed to start”，报错“Your Element is misconfigured  Invalid homeserver discovery response” 笔者百度未果，转而咨询了社区志愿者得知是默认Homeserver的问题，并按官方文档修改默认配置解决了问题。鉴于国内相关资料较少，把这次经历分享出来供大">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-10T02:50:00.000Z">
+<meta property="article:modified_time" content="2022-06-10T02:50:40.438Z">
 <meta property="article:author" content="CR.Z">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>归档 - CR.Z &#39;s Blog</title>
+  <title>“Your Element is misconfigured”错误的解决 - CR.Z &#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -55,7 +74,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -156,9 +175,49 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="“Your Element is misconfigured”错误的解决">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      CR.Z
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-06-10 10:50" pubdate>
+        星期五, 六月 10日 2022, 10:50 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      560 字
+    </span>
+  
+
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -171,40 +230,88 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 4 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/posts/37773.html" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">测试</span>
-      <time style="float: right;">12-19</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">“Your Element is misconfigured”错误的解决</h1>
+            
+            <div class="markdown-body">
+              <p>笔者昨天装了个Element For Windows，结果一打开就“Failed to start”，报错“Your Element is misconfigured  Invalid homeserver discovery response”</p>
+<p>笔者百度未果，转而咨询了社区志愿者得知是默认Homeserver的问题，并按官方文档修改默认配置解决了问题。鉴于国内相关资料较少，把这次经历分享出来供大家参考。</p>
+<p>Element默认的Homeserver是官方实例，由于种种原因连不上，是问题发生的原因。解决方法也比较简单，修改自定义配置，指定一个能用的Homeserver就行了。</p>
+<p>转到Element程序目录，一般是 %AppData%/Element ，在Element目录下新建一个文件并命名为 config.json </p>
+<p>编辑config.json，添加如下字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">&#123;<br>   &quot;default_server_config&quot;: &#123;<br>      &quot;m.homeserver&quot;: &#123;<br>         &quot;base_url&quot;: &quot;https://matrixim.cc&quot;<br>      &#125;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>其中”base_url”项的值需要修改成你指定的Homeserver，修改后保存即可。</p>
 
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/1641.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">为Matrix与Telegram建立桥接（Bridge）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/7e52.html">
+                        <span class="hidden-mobile">动漫网站汇总（持续更新）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -287,6 +394,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 

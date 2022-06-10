@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>为Matrix与Telegram建立桥接（Bridge）</title>
+    <link href="/posts/1641.html"/>
+    <url>/posts/1641.html</url>
+    
+    <content type="html"><![CDATA[<p>本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。</p><p>1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。<br>·在Matrix客户端（以Element为例）中进入群组，打开更多选项—设置—成员，点右下角邀请按钮，将用户**@telegram:t2bot.io<strong>邀请加入聊天室。<br>·在Telegram客户端进入群组详情页，点邀请新成员，邀请</strong>@matrix_t2bot**加入群组。</p><p>2.在Telegram群组聊天框中输入并向bot发送**/id**命令，等待bot回复，获得此群组的id号。</p><p>3.回到Matrix客户端，进入聊天室，发送**!tg bridge -xxxxx<strong>命令（“-xxxxx”是步骤2中获得的Tg群组id好，注意“-”符号与空格）。此时如果配置正确，bot会要求你验证，输入</strong>continue**命令确认即完成配置。</p><p>配置好网桥后，两个平台的消息将由bot互相转发，bot将为Telegram用户创建Matrix账户，而Matrix用户在Telegram中将由bot显示。最好把bot设置成协管员。</p><p>P.S.有朋友说Matrix在国内没法正常使用，这个说法其实不对。无法正常使用的只是matrix.org提供的Homeserver而已，而Matrix协议并没有被禁止。作一个比喻，Matrix就像邮箱一样，matrix.org只是其中一个邮箱服务提供商，此外还有成百上千个别的提供商，甚至你自己也能搭建。Gmail用不了我们就用163，实际大多数Homeserver都是可以正常用的。正如163和Gmail用户可以互相发邮件，托管在不同Homeserver的用户或聊天室也能互相交流，我们可以选择一个信任的提供商托管账号。这里有一份公共Matrix服务器列表可供选择参考。</p><blockquote><p>最后推荐几个比较活跃的中文频道吧：<br>#delicious:retirenow.top（美食群）<br>#yingshiju:cybre.space（电影交流群）<br>#game-recommend:bgme.me（游戏推荐群）<br>#tuna:matrix.org（清华大学TUNA技术群）</p></blockquote>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>“Your Element is misconfigured”错误的解决</title>
+    <link href="/posts/165a.html"/>
+    <url>/posts/165a.html</url>
+    
+    <content type="html"><![CDATA[<p>笔者昨天装了个Element For Windows，结果一打开就“Failed to start”，报错“Your Element is misconfigured  Invalid homeserver discovery response”</p><p>笔者百度未果，转而咨询了社区志愿者得知是默认Homeserver的问题，并按官方文档修改默认配置解决了问题。鉴于国内相关资料较少，把这次经历分享出来供大家参考。</p><p>Element默认的Homeserver是官方实例，由于种种原因连不上，是问题发生的原因。解决方法也比较简单，修改自定义配置，指定一个能用的Homeserver就行了。</p><p>转到Element程序目录，一般是 %AppData%/Element ，在Element目录下新建一个文件并命名为 config.json </p><p>编辑config.json，添加如下字段：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">&#123;<br>   &quot;default_server_config&quot;: &#123;<br>      &quot;m.homeserver&quot;: &#123;<br>         &quot;base_url&quot;: &quot;https://matrixim.cc&quot;<br>      &#125;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>其中”base_url”项的值需要修改成你指定的Homeserver，修改后保存即可。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>动漫网站汇总（持续更新）</title>
     <link href="/posts/7e52.html"/>
     <url>/posts/7e52.html</url>
