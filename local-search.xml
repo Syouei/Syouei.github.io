@@ -43,6 +43,19 @@
   
   
   <entry>
+    <title>利用OpenSSL创建S/MIME自签名证书</title>
+    <link href="/posts/8458.html"/>
+    <url>/posts/8458.html</url>
+    
+    <content type="html"><![CDATA[<p>配置环境变量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">rundll32 sysdm.cpl,EditEnvironmentVariables<br></code></pre></td></tr></table></figure><p>为CA机构创建私钥，并生成自签名证书</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">openssl genrsa -aes256 -out ca.key 4096<br></code></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">openssl req -new -x509 -days 3650 -key ca.key -out ca.crt<br></code></pre></td></tr></table></figure><p>创建个人证书私钥</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">openssl genrsa -aes256 -out example_personal_user.key 4096<br></code></pre></td></tr></table></figure><p>创建签名请求</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">openssl req -new -key example_personal_user.key -out example_personal_user.csr<br></code></pre></td></tr></table></figure><p>签署证书</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">openssl x509 -req -days 3650 -in example_personal_user.csr -CA ca.crt -CAkey ca.key -set_serial 1 -out example_personal_user.crt -addtrust emailProtection -addreject clientAuth -addreject serverAuth -trustout<br></code></pre></td></tr></table></figure><p>导出</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">openssl pkcs12 -export -in example_personal_user.crt -inkey example_personal_user.key -out example_personal_user.p12<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>测试</title>
     <link href="/posts/37773.html"/>
     <url>/posts/37773.html</url>
