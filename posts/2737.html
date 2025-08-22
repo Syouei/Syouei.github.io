@@ -16,12 +16,12 @@
   <meta name="author" content="CR.Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简介 什么是OpenPGP？  OpenPGP是一种以安全的“端到端”方式对数据（例如电子邮件）进行加密和&#x2F;或签名的方法。这意味着，邮件在您的计算机上使用收件人的公钥进行加密，电子邮件服务器不知道邮件的内容。然后，邮件的收件人使用其私钥在自己的计算机上解密邮件。  我们不是来探讨技术原理的，所以说，本文不会深入涉及密码学概念，实用是本文的目的。邮件本身就是实用的东西，我们每天都在用QQ、163发文">
+    <meta name="description" content="简介什么是OpenPGP？  OpenPGP是一种以安全的“端到端”方式对数据（例如电子邮件）进行加密和&#x2F;或签名的方法。这意味着，邮件在您的计算机上使用收件人的公钥进行加密，电子邮件服务器不知道邮件的内容。然后，邮件的收件人使用其私钥在自己的计算机上解密邮件。  我们不是来探讨技术原理的，所以说，本文不会深入涉及密码学概念，实用是本文的目的。邮件本身就是实用的东西，我们每天都在用QQ、163发文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用OpenPGP实现邮件端到端加密">
 <meta property="og:url" content="https://syouei.github.io/posts/2737.html">
 <meta property="og:site_name" content="CR.Z &#39;s Blog">
-<meta property="og:description" content="简介 什么是OpenPGP？  OpenPGP是一种以安全的“端到端”方式对数据（例如电子邮件）进行加密和&#x2F;或签名的方法。这意味着，邮件在您的计算机上使用收件人的公钥进行加密，电子邮件服务器不知道邮件的内容。然后，邮件的收件人使用其私钥在自己的计算机上解密邮件。  我们不是来探讨技术原理的，所以说，本文不会深入涉及密码学概念，实用是本文的目的。邮件本身就是实用的东西，我们每天都在用QQ、163发文">
+<meta property="og:description" content="简介什么是OpenPGP？  OpenPGP是一种以安全的“端到端”方式对数据（例如电子邮件）进行加密和&#x2F;或签名的方法。这意味着，邮件在您的计算机上使用收件人的公钥进行加密，电子邮件服务器不知道邮件的内容。然后，邮件的收件人使用其私钥在自己的计算机上解密邮件。  我们不是来探讨技术原理的，所以说，本文不会深入涉及密码学概念，实用是本文的目的。邮件本身就是实用的东西，我们每天都在用QQ、163发文件">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-dcf05868204583fe7fde5895a236eb04_1440w.webp?source=d16d100b">
 <meta property="og:image" content="https://picx.zhimg.com/80/v2-724410920631eaf7804f6a38422b82c3_1440w.webp?source=d16d100b">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://picx.zhimg.com/80/v2-bb42b58a38a8a235ccd70e154c247aea_1440w.webp?source=d16d100b">
 <meta property="og:image" content="https://picx.zhimg.com/80/v2-2950df0328ee9daee83e9a431a0beec0_1440w.webp?source=d16d100b">
 <meta property="article:published_time" content="2025-08-22T05:31:02.000Z">
-<meta property="article:modified_time" content="2025-08-22T06:35:05.466Z">
+<meta property="article:modified_time" content="2025-08-22T10:50:56.785Z">
 <meta property="article:author" content="CR.Z">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-dcf05868204583fe7fde5895a236eb04_1440w.webp?source=d16d100b">
@@ -255,8 +255,7 @@
             <h1 style="display: none">利用OpenPGP实现邮件端到端加密</h1>
             
             <div class="markdown-body">
-              <p>简介</p>
-<p>什么是OpenPGP？</p>
+              <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>什么是OpenPGP？</p>
 <blockquote>
 <p>OpenPGP是一种以安全的“端到端”方式对数据（例如电子邮件）进行加密和/或签名的方法。这意味着，邮件在您的计算机上使用收件人的公钥进行加密，电子邮件服务器不知道邮件的内容。然后，邮件的收件人使用其私钥在自己的计算机上解密邮件。</p>
 </blockquote>
@@ -299,11 +298,8 @@
 <p>成功收到邮件。必须用支持OpenPGP的客户端，否则收到被加密的附件。客户端必须导入了你的OpenPGP私钥，才能正确解密。</p>
 <p>（原发布于：2022-06-17 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/530339245">zhihu</a> ）</p>
 <blockquote>
-<p>欢迎联系测试！</p>
-<p>我的邮箱：<br><a href="mailto:&#x5a;&#104;&#117;&#x43;&#82;&#x40;&#x68;&#111;&#116;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;">&#x5a;&#104;&#117;&#x43;&#82;&#x40;&#x68;&#111;&#116;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
-<p>PGP公钥：<br>—–BEGIN PGP PUBLIC KEY BLOCK—–<br>xjMEY0/txxYJKwYBBAHaRw8BAQdAGUw1e7Lj/K3mXA/ZSztgncuZyQJV5ZZf8+Vs<br>43fF1LnNH0NoZW5nIFIuWmh1IDx6aHVjckBob3RtYWlsLmNvbT7CkwQTFgoAOxYh<br>BLLP6v2ir+7agvNmoq1l8xB8PD+7BQJjT+3HAhsjBQsJCAcCAiICBhUKCQgLAgQW<br>AgMBAh4HAheAAAoJEK1l8xB8PD+7kpsBAKcZ2+RebLihFm5zH8VIEW4AcGBILxa4<br>OclDzSdZHceOAQCdfAYg2xFLm1WcigwbC6MpuqT5JmicdePN/lbSYXNdCM44BGNP<br>7ccSCisGAQQBl1UBBQEBB0DbLczjolTYwinnPJGegvZp1tO2u6qBWAfrgKdnm2ke<br>AAMBCAfCeAQYFgoAIBYhBLLP6v2ir+7agvNmoq1l8xB8PD+7BQJjT+3HAhsMAAoJ<br>EK1l8xB8PD+7/J8A/0cg98mxD0D4siaxt2NPdfDitg1i428XtCvOc+G9w2lKAQDM<br>bodQCEJk2U8UfXSSWUGgP/Xm2A4tcZoh5BsEe3PDBw==<br>=nVJu<br>—–END PGP PUBLIC KEY BLOCK—–</p>
 </blockquote>
-
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs excel">欢迎联系测试！<br><br>我的邮箱：<br>ZhuCR@hotmail.com<br><br>PGP公钥：<br>-----BEGIN PGP PUBLIC KEY BLOCK-----<br>xjMEY0/txxYJKwYBBAHaRw8BAQdAGUw1e7Lj/K3mXA/ZSztgncuZyQJV5ZZf8+Vs<br><span class="hljs-number">43</span>fF1LnNH0NoZW5nIFIuWmh1IDx6aHVjckBob3RtYWlsLmNvbT7CkwQTFgoAOxYh<br>BLLP6v2ir+<span class="hljs-number">7</span>agvNmoq1l8xB8PD+<span class="hljs-number">7</span>BQJjT+<span class="hljs-number">3</span>HAhsjBQsJCAcCAiICBhUKCQgLAgQW<br>AgMBAh4HAheAAAoJEK1l8xB8PD+<span class="hljs-number">7</span>kpsBAKcZ2+RebLihFm5zH8VIEW4AcGBILxa4<br>OclDzSdZHceOAQCdfAYg2xFLm1WcigwbC6MpuqT5JmicdePN/lbSYXNdCM44BGNP<br><span class="hljs-number">7</span>ccSCisGAQQBl1UBBQEBB0DbLczjolTYwinnPJGegvZp1tO2u6qBWAfrgKdnm2ke<br>AAMBCAfCeAQYFgoAIBYhBLLP6v2ir+<span class="hljs-number">7</span>agvNmoq1l8xB8PD+<span class="hljs-number">7</span>BQJjT+<span class="hljs-number">3</span>HAhsMAAoJ<br>EK1l8xB8PD+<span class="hljs-number">7</span>/J8A/<span class="hljs-number">0</span>cg98mxD0D4siaxt2NPdfDitg1i428XtCvOc+G9w2lKAQDM<br>bodQCEJk2U8UfXSSWUGgP/Xm2A4tcZoh5BsEe3PDBw==<br>=nVJu<br>-----END PGP PUBLIC KEY BLOCK-----<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
