@@ -16,20 +16,32 @@
   <meta name="author" content="CR.Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。 1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。·在Matrix客户端（以Element为例）中进">
+    <meta name="description" content="简介 什么是OpenPGP？  OpenPGP是一种以安全的“端到端”方式对数据（例如电子邮件）进行加密和&#x2F;或签名的方法。这意味着，邮件在您的计算机上使用收件人的公钥进行加密，电子邮件服务器不知道邮件的内容。然后，邮件的收件人使用其私钥在自己的计算机上解密邮件。  我们不是来探讨技术原理的，所以说，本文不会深入涉及密码学概念，实用是本文的目的。邮件本身就是实用的东西，我们每天都在用QQ、163发文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为Matrix与Telegram建立桥接（Bridge）">
-<meta property="og:url" content="https://syouei.github.io/posts/1641.html">
+<meta property="og:title" content="利用OpenPGP实现邮件端到端加密">
+<meta property="og:url" content="https://syouei.github.io/posts/2737.html">
 <meta property="og:site_name" content="CR.Z &#39;s Blog">
-<meta property="og:description" content="本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。 1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。·在Matrix客户端（以Element为例）中进">
+<meta property="og:description" content="简介 什么是OpenPGP？  OpenPGP是一种以安全的“端到端”方式对数据（例如电子邮件）进行加密和&#x2F;或签名的方法。这意味着，邮件在您的计算机上使用收件人的公钥进行加密，电子邮件服务器不知道邮件的内容。然后，邮件的收件人使用其私钥在自己的计算机上解密邮件。  我们不是来探讨技术原理的，所以说，本文不会深入涉及密码学概念，实用是本文的目的。邮件本身就是实用的东西，我们每天都在用QQ、163发文">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-10T02:54:03.000Z">
-<meta property="article:modified_time" content="2022-06-10T02:54:10.366Z">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-dcf05868204583fe7fde5895a236eb04_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/80/v2-724410920631eaf7804f6a38422b82c3_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://pica.zhimg.com/80/v2-96ee3a14c2645382c374ed6e1d982f4a_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/80/v2-d1515295a71674a06469fb0735520821_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/80/v2-f037fc069a29f1690c5fa10c8cbcead7_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/80/v2-3b2920f25da6f69ee2e9495bfd09d4e2_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-7feab264cd0e7cd6d8b425bc6d2372db_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/80/v2-6aba03330cf5b883eed1845d00d328ee_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/80/v2-64de5cac281fb6997f0468db4b8b1cbf_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/80/v2-bb42b58a38a8a235ccd70e154c247aea_1440w.webp?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/80/v2-2950df0328ee9daee83e9a431a0beec0_1440w.webp?source=d16d100b">
+<meta property="article:published_time" content="2025-08-22T05:31:02.000Z">
+<meta property="article:modified_time" content="2025-08-22T05:35:53.640Z">
 <meta property="article:author" content="CR.Z">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-dcf05868204583fe7fde5895a236eb04_1440w.webp?source=d16d100b">
   
   
-  <title>为Matrix与Telegram建立桥接（Bridge） - CR.Z &#39;s Blog</title>
+  <title>利用OpenPGP实现邮件端到端加密 - CR.Z &#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="为Matrix与Telegram建立桥接（Bridge）">
+            <span class="h2" id="subtitle" title="利用OpenPGP实现邮件端到端加密">
               
             </span>
 
@@ -190,8 +202,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-06-10 10:54" pubdate>
-        星期五, 六月 10日 2022, 10:54 上午
+      <time datetime="2025-08-22 13:31" pubdate>
+        星期五, 八月 22日 2025, 1:31 下午
       </time>
     </span>
   
@@ -201,7 +213,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      989 字
+      1.9k 字
     </span>
   
 
@@ -240,18 +252,52 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">为Matrix与Telegram建立桥接（Bridge）</h1>
+            <h1 style="display: none">利用OpenPGP实现邮件端到端加密</h1>
             
             <div class="markdown-body">
-              <p>本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。</p>
-<p>1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。<br>·在Matrix客户端（以Element为例）中进入群组，打开更多选项—设置—成员，点右下角邀请按钮，将用户**@telegram:t2bot.io<strong>邀请加入聊天室。<br>·在Telegram客户端进入群组详情页，点邀请新成员，邀请</strong>@matrix_t2bot**加入群组。</p>
-<p>2.在Telegram群组聊天框中输入并向bot发送**/id**命令，等待bot回复，获得此群组的id号。</p>
-<p>3.回到Matrix客户端，进入聊天室，发送**!tg bridge -xxxxx<strong>命令（“-xxxxx”是步骤2中获得的Tg群组id好，注意“-”符号与空格）。此时如果配置正确，bot会要求你验证，输入</strong>continue**命令确认即完成配置。</p>
-<p>配置好网桥后，两个平台的消息将由bot互相转发，bot将为Telegram用户创建Matrix账户，而Matrix用户在Telegram中将由bot显示。最好把bot设置成协管员。</p>
-<p>P.S.有朋友说Matrix在国内没法正常使用，这个说法其实不对。无法正常使用的只是matrix.org提供的Homeserver而已，而Matrix协议并没有被禁止。作一个比喻，Matrix就像邮箱一样，matrix.org只是其中一个邮箱服务提供商，此外还有成百上千个别的提供商，甚至你自己也能搭建。Gmail用不了我们就用163，实际大多数Homeserver都是可以正常用的。正如163和Gmail用户可以互相发邮件，托管在不同Homeserver的用户或聊天室也能互相交流，我们可以选择一个信任的提供商托管账号。这里有一份公共Matrix服务器列表可供选择参考。</p>
+              <p>简介</p>
+<p>什么是OpenPGP？</p>
 <blockquote>
-<p>最后推荐几个比较活跃的中文频道吧：<br>#delicious:retirenow.top（美食群）<br>#yingshiju:cybre.space（电影交流群）<br>#game-recommend:bgme.me（游戏推荐群）<br>#tuna:matrix.org（清华大学TUNA技术群）</p>
+<p>OpenPGP是一种以安全的“端到端”方式对数据（例如电子邮件）进行加密和/或签名的方法。这意味着，邮件在您的计算机上使用收件人的公钥进行加密，电子邮件服务器不知道邮件的内容。然后，邮件的收件人使用其私钥在自己的计算机上解密邮件。</p>
 </blockquote>
+<p>我们不是来探讨技术原理的，所以说，本文不会深入涉及密码学概念，实用是本文的目的。邮件本身就是实用的东西，我们每天都在用QQ、163发文件，存资料，然而我们邮件的内容是否是安全的呢？邮件的内容是否会受到<br> 或泄露？有没有大他者正watching<br>you？不搞清楚这些问题，总感觉安全感受到侵犯。可惜国内公司一向不重视用户隐私权，在他们眼里，“中国用户愿意用隐私换‘便利’”，窥视用户数据好像成了一件里所应当的事情。口头上的承诺是廉价的，只有技术上的保证是有力的。</p>
+<p>OpenPGP推出十多年了，然而在国内未得到重视，未被广泛使用，向普通用户介绍这一工具，从而维护通信自由与秘密的权利，这就是我写下本文的目的。</p>
+<h2 id="邮箱客户端"><a href="#邮箱客户端" class="headerlink" title="邮箱客户端"></a>邮箱客户端</h2><p>以下是使用OpenPGP加密邮件的必要条件：</p>
+<blockquote>
+<p>1.一个支持IMAP/POP3和SMTP的邮箱账户<br>2.支持PGP的邮箱客户端<br>3.双方都有可用的PGP密钥<br>4.知道对方的公钥</p>
+</blockquote>
+<p>注册邮箱用第三方客户端登陆邮箱账户不在本文讨论范围。由于端到端加密的特性，我们可以不考虑邮件服务器的安全性了。</p>
+<p>根据官网介绍，Windows平台上支持OpenPGP的邮箱客户端有Claws Mail、eM Client、EverDesk、The Bat!等，我则推荐选用Mozilla开发的<strong>Thunderbird</strong>，它功能强大，开源，可扩展性强，用户较多。Linux/Max平台上的客户端则大多支持OpenPGP标准。安卓可用K-9 Mail，顺便提一句，前两天Thunderbird好像接手了K-9 Mail的开发。</p>
+<p>网上一些年代比较久远的教程还涉及PGPDesktop、Enigmail插件等，而Thunderbird早已原生自带了一个简洁易用的OpenPGP密钥管理器，不必另行安装，方便很多。</p>
+<p>官网：<a target="_blank" rel="noopener" href="https://www.thunderbird.net/zh-CN/">https://www.thunderbird.net/zh-CN/</a></p>
+<h2 id="创建个人密钥"><a href="#创建个人密钥" class="headerlink" title="创建个人密钥"></a>创建个人密钥</h2><h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><p>通过右上角菜单键，打开“账户设置”标签页，进入“端到端加密”设置页，点“添加密钥”为账户创建OpenPGP密钥</p>
+<p><img src="https://pic1.zhimg.com/80/v2-dcf05868204583fe7fde5895a236eb04_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<p>如果已有密钥，导入到新客户端则选第二项，验证并导入私钥。</p>
+<p><img src="https://picx.zhimg.com/80/v2-724410920631eaf7804f6a38422b82c3_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<p>有效期可以设置的长一点，不必频繁换。据估计，按照目前的算力，破解RSA-3072需要二十年，破解EdDSA密钥则更久，况且也没人会闲的搞你去。密钥类型，ECC体积小，运算快，RSA则兼容性更好。</p>
+<p><img src="https://pica.zhimg.com/80/v2-96ee3a14c2645382c374ed6e1d982f4a_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<p>如图，成功生成了OpenPGP密钥</p>
+<p><img src="https://picx.zhimg.com/80/v2-d1515295a71674a06469fb0735520821_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<h3 id="备份密钥"><a href="#备份密钥" class="headerlink" title="备份密钥"></a>备份密钥</h3><p><img src="https://picx.zhimg.com/80/v2-f037fc069a29f1690c5fa10c8cbcead7_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<p>设置密码，之后就得到了一个私钥备份。要留存好这个私钥，更换电脑了需要导入它。公钥则不必备份，因为公钥是私钥的一部分，通过私钥可以推算出公钥，反过来则不行。</p>
+<h3 id="导出公钥，并发布到公共服务器"><a href="#导出公钥，并发布到公共服务器" class="headerlink" title="导出公钥，并发布到公共服务器"></a>导出公钥，并发布到公共服务器</h3><p>前面提到，要给人写邮件，必须知道对方的公钥，那现在换位思考，如果别人要给你写邮件的话，也需要知道你的公钥。</p>
+<p><img src="https://picx.zhimg.com/80/v2-3b2920f25da6f69ee2e9495bfd09d4e2_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<p>如果写邮件之前都手动交换密钥当然可以，但未免有点麻烦，PGP Key Server则解决了这个问题。KeyServer是一个数据库，用户把各自的公钥上传上去，别人要给你写邮件只需到KeyServer上查询你的公钥即可。</p>
+<blockquote>
+<p>KeyServer服务器 ：<br><a target="_blank" rel="noopener" href="https://keys.openpgp.org/">https://keys.openpgp.org/</a> （推荐）<br><a target="_blank" rel="noopener" href="http://keyserver.pgp.com/">http://keyserver.pgp.com/</a><br><a target="_blank" rel="noopener" href="https://keyserver.ubuntu.com/">https://keyserver.ubuntu.com/</a><br><a target="_blank" rel="noopener" href="http://pgp.mit.edu/">http://pgp.mit.edu/</a><br>……</p>
+</blockquote>
+<p>访问 <a target="_blank" rel="noopener" href="https://keys.openpgp.org/upload">https://keys.openpgp.org/upload</a> ，上传刚刚导出的公钥（文件名里带pub的）</p>
+<p><img src="https://pic1.zhimg.com/80/v2-7feab264cd0e7cd6d8b425bc6d2372db_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<p>点”Send Verification Email“，发送验证邮件，然后登录邮箱，访问链接验证。完事。</p>
+<p><img src="https://picx.zhimg.com/80/v2-6aba03330cf5b883eed1845d00d328ee_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<h2 id="邮件收发"><a href="#邮件收发" class="headerlink" title="邮件收发"></a>邮件收发</h2><h3 id="获取公钥"><a href="#获取公钥" class="headerlink" title="获取公钥"></a>获取公钥</h3><p>要给别人发邮件，需要对方的公钥。如果对方也使用OpenPGP，并在KeyServer公布了公钥，我们就可以在网上检索到。</p>
+<p>点Thunderbird右上角菜单-工具，打开OpenPGP密钥管理器，点密钥服务器-在网上寻找密钥，查询到后接受并导入。（Protonmail等加密邮箱也支持OpenPGP，也能搜到，给Proton邮箱发件记得附带公钥）</p>
+<p><img src="https://picx.zhimg.com/80/v2-64de5cac281fb6997f0468db4b8b1cbf_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://picx.zhimg.com/80/v2-bb42b58a38a8a235ccd70e154c247aea_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<h3 id="发邮件"><a href="#发邮件" class="headerlink" title="发邮件"></a>发邮件</h3><p>启用加密。加密确保内容私密，签名可确保内容完整，不签也行。主题加密就是标题也加密。对方给你发件也需要你的公钥，如果对方知道你的公钥可不附带。</p>
+<p><img src="https://picx.zhimg.com/80/v2-2950df0328ee9daee83e9a431a0beec0_1440w.webp?source=d16d100b" srcset="/img/loading.gif" lazyload></p>
+<p>成功收到邮件。必须用支持OpenPGP的客户端，否则收到被加密的附件。客户端必须导入了你的OpenPGP私钥，才能正确解密。</p>
+<p>（原发布于：2022-06-17 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/530339245">zhihu</a> ）</p>
 
             </div>
             <hr>
@@ -272,18 +318,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/baf1.html">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">IPFS Desktop备份IPNS发布密钥</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/165a.html">
-                        <span class="hidden-mobile">“Your Element is misconfigured”错误的解决</span>
+                      <a href="/posts/baf1.html">
+                        <span class="hidden-mobile">IPFS Desktop备份IPNS发布密钥</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

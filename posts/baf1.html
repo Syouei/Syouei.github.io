@@ -16,20 +16,20 @@
   <meta name="author" content="CR.Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。 1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。·在Matrix客户端（以Element为例）中进">
+    <meta name="description" content="1.添加环境变量将以下目录添加至系统变量Path： 1%IPFS Desktop安装目录%\resources\app.asar.unpacked\node_modules\kubo\kubo  2.使用ipfs key export命令导出密钥命令用法： 1ipfs key export [选项] &lt;密钥名称&gt;  -f参数：指定导出的私钥文件格式。可选值为libp2p-protobu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为Matrix与Telegram建立桥接（Bridge）">
-<meta property="og:url" content="https://syouei.github.io/posts/1641.html">
+<meta property="og:title" content="IPFS Desktop备份IPNS发布密钥">
+<meta property="og:url" content="https://syouei.github.io/posts/baf1.html">
 <meta property="og:site_name" content="CR.Z &#39;s Blog">
-<meta property="og:description" content="本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。 1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。·在Matrix客户端（以Element为例）中进">
+<meta property="og:description" content="1.添加环境变量将以下目录添加至系统变量Path： 1%IPFS Desktop安装目录%\resources\app.asar.unpacked\node_modules\kubo\kubo  2.使用ipfs key export命令导出密钥命令用法： 1ipfs key export [选项] &lt;密钥名称&gt;  -f参数：指定导出的私钥文件格式。可选值为libp2p-protobu">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-10T02:54:03.000Z">
-<meta property="article:modified_time" content="2022-06-10T02:54:10.366Z">
+<meta property="article:published_time" content="2025-08-22T05:21:00.000Z">
+<meta property="article:modified_time" content="2025-08-22T05:27:50.956Z">
 <meta property="article:author" content="CR.Z">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>为Matrix与Telegram建立桥接（Bridge） - CR.Z &#39;s Blog</title>
+  <title>IPFS Desktop备份IPNS发布密钥 - CR.Z &#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="为Matrix与Telegram建立桥接（Bridge）">
+            <span class="h2" id="subtitle" title="IPFS Desktop备份IPNS发布密钥">
               
             </span>
 
@@ -190,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-06-10 10:54" pubdate>
-        星期五, 六月 10日 2022, 10:54 上午
+      <time datetime="2025-08-22 13:21" pubdate>
+        星期五, 八月 22日 2025, 1:21 下午
       </time>
     </span>
   
@@ -201,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      989 字
+      950 字
     </span>
   
 
@@ -240,18 +240,35 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">为Matrix与Telegram建立桥接（Bridge）</h1>
+            <h1 style="display: none">IPFS Desktop备份IPNS发布密钥</h1>
             
             <div class="markdown-body">
-              <p>本文介绍一种为Matrix聊天室与Telegram群组建立网桥（Matrix-Telegram-Bridge）的方法，此方法利用了t2bot.io提供的公共网桥服务。通过架设网桥，Matrix聊天室与Telegram群组间可实现消息互通。但是请注意，此方法不适用于加密聊天室。</p>
-<p>1.将Bot邀请进要进行桥接的Matrix聊天室与Telegram群组。<br>·在Matrix客户端（以Element为例）中进入群组，打开更多选项—设置—成员，点右下角邀请按钮，将用户**@telegram:t2bot.io<strong>邀请加入聊天室。<br>·在Telegram客户端进入群组详情页，点邀请新成员，邀请</strong>@matrix_t2bot**加入群组。</p>
-<p>2.在Telegram群组聊天框中输入并向bot发送**/id**命令，等待bot回复，获得此群组的id号。</p>
-<p>3.回到Matrix客户端，进入聊天室，发送**!tg bridge -xxxxx<strong>命令（“-xxxxx”是步骤2中获得的Tg群组id好，注意“-”符号与空格）。此时如果配置正确，bot会要求你验证，输入</strong>continue**命令确认即完成配置。</p>
-<p>配置好网桥后，两个平台的消息将由bot互相转发，bot将为Telegram用户创建Matrix账户，而Matrix用户在Telegram中将由bot显示。最好把bot设置成协管员。</p>
-<p>P.S.有朋友说Matrix在国内没法正常使用，这个说法其实不对。无法正常使用的只是matrix.org提供的Homeserver而已，而Matrix协议并没有被禁止。作一个比喻，Matrix就像邮箱一样，matrix.org只是其中一个邮箱服务提供商，此外还有成百上千个别的提供商，甚至你自己也能搭建。Gmail用不了我们就用163，实际大多数Homeserver都是可以正常用的。正如163和Gmail用户可以互相发邮件，托管在不同Homeserver的用户或聊天室也能互相交流，我们可以选择一个信任的提供商托管账号。这里有一份公共Matrix服务器列表可供选择参考。</p>
-<blockquote>
-<p>最后推荐几个比较活跃的中文频道吧：<br>#delicious:retirenow.top（美食群）<br>#yingshiju:cybre.space（电影交流群）<br>#game-recommend:bgme.me（游戏推荐群）<br>#tuna:matrix.org（清华大学TUNA技术群）</p>
-</blockquote>
+              <h5 id="1-添加环境变量"><a href="#1-添加环境变量" class="headerlink" title="1.添加环境变量"></a>1.添加环境变量</h5><p>将以下目录添加至系统变量Path：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">%IPFS Desktop安装目录%\resources\app.asar.unpacked\node_modules\kubo\kubo<br></code></pre></td></tr></table></figure>
+
+<h5 id="2-使用ipfs-key-export命令导出密钥"><a href="#2-使用ipfs-key-export命令导出密钥" class="headerlink" title="2.使用ipfs key export命令导出密钥"></a>2.使用<code>ipfs key export</code>命令导出密钥</h5><p>命令用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">ipfs key export [选项] &lt;密钥名称&gt;<br></code></pre></td></tr></table></figure>
+
+<p><code>-f</code>参数：指定导出的私钥文件格式。可选值为<code>libp2p-protobuf-cleartext</code><br>和<code>pem-pkcs8-cleartext</code>。默认为libp2p，IPNS的原生格式，pem是通用格式。</p>
+<p><code>-o</code>参数：指定导出文件的保存路径和文件名。如果不指定，文件会默认保存在当前目录，文件名是 <code>&lt;密钥名称&gt;.key</code></p>
+<p>获取列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">ipfs init<br>ipfs key list<br></code></pre></td></tr></table></figure>
+
+<p>导出密钥</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">ipfs key export -f pem-pkcs8-cleartext -o &quot;%USERPROFILE%\Desktop\exported_key.pem&quot; mykey<br></code></pre></td></tr></table></figure>
+
+<p>以上命令表示，以pem-pkcs8-cleartext格式将密钥<code>mykey</code>导出到桌面的<code>exported_key.pem</code>文件。导出的密钥是未加密的，应妥善保存。</p>
+<h5 id="3-使用ipfs-key-import命令导出密钥"><a href="#3-使用ipfs-key-import命令导出密钥" class="headerlink" title="3.使用ipfs key import命令导出密钥"></a>3.使用<code>ipfs key import</code>命令导出密钥</h5><p>命令用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">ipfs key import [选项] &lt;密钥名称&gt; &lt;密钥文件路径&gt;<br></code></pre></td></tr></table></figure>
+
+<p><code>-f</code> 指定导入的私钥文件格式。可选值：<code>libp2p-protobuf-cleartext</code>、<code>pem-pkcs8-cleartext</code></p>
+<p><code>--ipns-base=&lt;编码格式&gt;</code> 指定 IPNS 密钥的编码格式。可选值：<code>b58mh</code>、<code>base36</code>（默认）、<code>base32</code> 等。</p>
+<p><code>--allow-any-key-type</code> 允许导入任何类型的密钥</p>
+<p>用例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">ipfs key import mykey &quot;%USERPROFILE%\Desktop\exported_key.pem&quot; -f pem-pkcs8-cleartext<br></code></pre></td></tr></table></figure>
+
+<p>以上命令表示，将桌面上pem-pkcs8-cleartext格式的密钥文件<code>exported_key.pem</code>导入为密钥<code>mykey</code></p>
+<p><em>原发布于：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1941802211232441489">https://zhuanlan.zhihu.com/p/1941802211232441489</a></em></p>
 
             </div>
             <hr>
@@ -272,9 +289,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/baf1.html">
+                      <a href="/posts/2737.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">IPFS Desktop备份IPNS发布密钥</span>
+                        <span class="hidden-mobile">利用OpenPGP实现邮件端到端加密</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -282,8 +299,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/165a.html">
-                        <span class="hidden-mobile">“Your Element is misconfigured”错误的解决</span>
+                      <a href="/posts/1641.html">
+                        <span class="hidden-mobile">为Matrix与Telegram建立桥接（Bridge）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
